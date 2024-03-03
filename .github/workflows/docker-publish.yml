@@ -1,4 +1,4 @@
-name: Docker
+name: Publish kasm-k9s
 
 # This workflow uses actions that are not certified by GitHub.
 # They are provided by a third-party and are governed by
@@ -16,9 +16,7 @@ on:
     branches: [ "develop" ]
 
 env:
-  # Use docker.io for Docker Hub if empty
   REGISTRY: ghcr.io
-  # github.repository as <account>/<repo>
   IMAGE_NAME: "mathiasringhof/kasm-k9s"
 
 
@@ -78,7 +76,7 @@ jobs:
           context: .
           file: dockerfile-kasm-k9s
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: latest,${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
