@@ -10,7 +10,7 @@ WORKDIR $HOME
 
 ######### Customize Container Here ###########
 
-RUN apt-get update && apt-get install -y tmux screen nano dnsutils zip
+RUN apt-get update && apt-get install -y tmux screen nano dnsutils zip iputils-ping netcat-openbsd 
 
 RUN echo "set -g mouse on" > $HOME/.tmux.conf && chown 1000:1000  $HOME/.tmux.conf
 
@@ -27,6 +27,9 @@ RUN bash $INST_SCRIPTS/ansible/install_ansible.sh  && rm -rf $INST_SCRIPTS/ansib
 
 ### Install k9s
 RUN curl -sS https://webinstall.dev/k9s | bash
+
+### Install homebrew
+RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 COPY ./src/ubuntu/install/terminal/custom_startup.sh $STARTUPDIR/custom_startup.sh
 RUN chmod +x $STARTUPDIR/custom_startup.sh
