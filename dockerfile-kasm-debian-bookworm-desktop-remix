@@ -18,7 +18,6 @@ ENV DEBIAN_FRONTEND=noninteractive \
                   /ubuntu/install/misc/install_tools.sh \
                   /ubuntu/install/filezilla/install_filezilla.sh \                  
                   /ubuntu/install/firefox/install_firefox.sh \
-                  /ubuntu/install/brave/install_brave.sh \
                   /ubuntu/install/vs_code/install_vs_code.sh \
                   /ubuntu/install/remmina/install_remmina.sh \
                   /ubuntu/install/signal/install_signal.sh \
