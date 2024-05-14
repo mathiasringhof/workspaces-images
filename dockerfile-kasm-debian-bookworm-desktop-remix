@@ -16,18 +16,27 @@ ENV DEBIAN_FRONTEND=noninteractive \
     INST_DIR=$STARTUPDIR/install \
     INST_SCRIPTS="/ubuntu/install/tools/install_tools_deluxe.sh \
                   /ubuntu/install/misc/install_tools.sh \
+                  /ubuntu/install/chrome/install_chrome.sh \
+                  /ubuntu/install/chromium/install_chromium.sh \
                   /ubuntu/install/firefox/install_firefox.sh \
+                  /ubuntu/install/sublime_text/install_sublime_text.sh \
                   /ubuntu/install/vs_code/install_vs_code.sh \
                   /ubuntu/install/remmina/install_remmina.sh \
+                  /ubuntu/install/only_office/install_only_office.sh \
                   /ubuntu/install/signal/install_signal.sh \
+                  /ubuntu/install/gimp/install_gimp.sh \
+                  /ubuntu/install/zoom/install_zoom.sh \
+                  /ubuntu/install/obs/install_obs.sh \
                   /ubuntu/install/ansible/install_ansible.sh \
+                  /ubuntu/install/terraform/install_terraform.sh \
+                  /ubuntu/install/telegram/install_telegram.sh \
+                  /ubuntu/install/thunderbird/install_thunderbird.sh \
+                  /ubuntu/install/slack/install_slack.sh \
                   /ubuntu/install/gamepad_utils/install_gamepad_utils.sh \
                   /ubuntu/install/cleanup/cleanup.sh"
 
 # Copy install scripts
 COPY ./src/ $INST_DIR
-COPY ./src/ubuntu/install/filezilla/filezilla.xml /dockerstartup/install/filezilla/filezilla.xml
-COPY ./src/ubuntu/install/brave /dockerstartup/install/brave/
 
 # Run installations
 RUN \
@@ -40,12 +49,6 @@ RUN \
   mkdir -p /home/kasm-user && \
   chown -R 1000:0 /home/kasm-user && \
   rm -Rf ${INST_DIR}
-
-### Install k9s 
-RUN curl -sS https://webinstall.dev/k9s | bash
-
-### Install kubectl
-RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" && install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 
 # Userspace Runtime
 ENV HOME /home/kasm-user
