@@ -9,6 +9,7 @@ ENV STARTUPDIR /dockerstartup
 WORKDIR $HOME
 
 ### Envrionment config
+# reduce available applications
 ENV DEBIAN_FRONTEND=noninteractive \
     SKIP_CLEAN=true \
     KASM_RX_HOME=$STARTUPDIR/kasmrx \
