@@ -1,15 +1,15 @@
 ARG BASE_TAG="develop"
-ARG BASE_IMAGE="core-fedora-38"
+ARG BASE_IMAGE="core-fedora-40"
 FROM kasmweb/$BASE_IMAGE:$BASE_TAG
 
 USER root
 
-ENV DISTRO=fedora38
+ENV DISTRO=fedora40
 ENV HOME /home/kasm-default-profile
 ENV STARTUPDIR /dockerstartup
 WORKDIR $HOME
 
-### Envrionment config
+### Envrionment config 
 ENV SKIP_CLEAN=true \
     KASM_RX_HOME=$STARTUPDIR/kasmrx \
     DONT_PROMPT_WSL_INSTALL="No_Prompt_please" \
@@ -25,7 +25,6 @@ ENV SKIP_CLEAN=true \
                   /oracle/install/gimp/install_gimp.sh \
                   /oracle/install/zoom/install_zoom.sh \
                   /oracle/install/ansible/install_ansible.sh \
-                  /oracle/install/terraform/install_terraform.sh \
                   /oracle/install/telegram/install_telegram.sh \
                   /ubuntu/install/thunderbird/install_thunderbird.sh \
                   /ubuntu/install/slack/install_slack.sh \
